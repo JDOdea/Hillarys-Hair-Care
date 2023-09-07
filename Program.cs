@@ -35,5 +35,18 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 #endregion
 
+#region Endpoints
+
+#region Endpoint--Appointments
+//  Get all Appointments
+app.MapGet("/api/appointments", (HillarysHairCareDbContext db) =>
+{
+    return db.Appointments
+        .Include(s => s.Stylist)
+        .Include(c => c.Customer);
+});
+#endregion
+
+#endregion
 
 app.Run();
