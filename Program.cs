@@ -47,6 +47,14 @@ app.MapGet("/api/appointments", (HillarysHairCareDbContext db) =>
 });
 #endregion
 
+#region Endpoint--Customers
+//  Get all Customers
+app.MapGet("/api/customers", (HillarysHairCareDbContext db) =>
+{
+    return db.Customers;
+});
+#endregion
+
 #endregion
 
 app.Run();
