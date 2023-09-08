@@ -84,6 +84,14 @@ app.MapDelete("/api/customers/{id}", (HillarysHairCareDbContext db, int id) =>
 });
 #endregion
 
+#region Endpoint--Stylists
+//  Get all Stylists
+app.MapGet("/api/stylists", (HillarysHairCareDbContext db) =>
+{
+    return db.Stylists;
+});
+#endregion
+
 #endregion
 
 app.Run();

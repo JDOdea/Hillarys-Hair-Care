@@ -53,12 +53,10 @@ export const CustomerList = () => {
 
     return (
         <>
-        
         <div className="container">
             <div className="sub-menu bg-light">
                 <h4>Customers</h4>
-            </div>
-                
+            </div>  
             <Table>
                 <thead>
                     <tr>
