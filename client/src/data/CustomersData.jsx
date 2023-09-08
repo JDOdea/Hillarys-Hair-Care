@@ -1,4 +1,4 @@
-const _apiUrl = "/api/customers"
+const _apiUrl = "/api/customers";
 
 //  Get all Customers
 export const getCustomers = async () => {
