@@ -123,6 +123,14 @@ app.MapPut("/api/stylists/{id}/status", (HillarysHairCareDbContext db, int id) =
 });
 #endregion
 
+#region Endpoint--Services
+//  Get all Services
+app.MapGet("/api/services", (HillarysHairCareDbContext db) =>
+{
+    return db.Services;
+});
+#endregion
+
 #endregion
 
 app.Run();
