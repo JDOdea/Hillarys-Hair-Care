@@ -88,7 +88,8 @@ app.MapDelete("/api/customers/{id}", (HillarysHairCareDbContext db, int id) =>
 //  Get all Stylists
 app.MapGet("/api/stylists", (HillarysHairCareDbContext db) =>
 {
-    return db.Stylists;
+    return db.Stylists
+        .OrderBy(s => s.Id);
 });
 
 //  Create Stylist
@@ -105,6 +106,20 @@ app.MapPost("/api/stylists", (HillarysHairCareDbContext db, Stylist stylist) =>
     {
         return Results.BadRequest("Invalid data submitted");
     }
+});
+
+//  Change activation of Stylist
+app.MapPut("/api/stylists/{id}/status", (HillarysHairCareDbContext db, int id) =>
+{
+    Stylist stylistToChange = db.Stylists.SingleOrDefault(s => s.Id == id);
+    if (stylistToChange == null)
+    {
+        return Results.NotFound();
+    }
+    stylistToChange.IsActive = !stylistToChange.IsActive;
+
+    db.SaveChanges();
+    return Results.NoContent();
 });
 #endregion
 
