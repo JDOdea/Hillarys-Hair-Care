@@ -6,20 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppointmentList } from './appointments/AppointmentList';
 import { CustomerList } from './customers/CustomerList';
+import { AddCustomer } from './customers/AddCustomer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path='/' element={<App />} >
+      <Route path="/" element={<App />} >
         <Route index element={<AppointmentList />} />
-        <Route path='services'>
+        <Route path="services">
           <Route index  />
         </Route>
-        <Route path='stylists'>
+        <Route path="stylists">
           <Route index />
         </Route>
-        <Route path='customers'>
+        <Route path="customers">
           <Route index element={<CustomerList />} />
         </Route>
       </Route>

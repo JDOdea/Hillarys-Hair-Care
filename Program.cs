@@ -53,6 +53,35 @@ app.MapGet("/api/customers", (HillarysHairCareDbContext db) =>
 {
     return db.Customers;
 });
+
+//  Create Customer
+app.MapPost("/api/customers", (HillarysHairCareDbContext db, Customer customer) =>
+{
+    try
+    {
+        customer.Id = db.Customers.Count() > 0 ? db.Customers.Max(c => c.Id) + 1 : 1;
+        db.Customers.Add(customer);
+        db.SaveChanges();
+        return Results.Created($"/api/customers/{customer.Id}", customer);
+    }
+    catch (DbUpdateException)
+    {
+        return Results.BadRequest("Invalid data submitted");
+    }
+});
+
+//  Remove Customer
+app.MapDelete("/api/customers/{id}", (HillarysHairCareDbContext db, int id) => 
+{
+    Customer customerToDelete = db.Customers.SingleOrDefault(c => c.Id == id);
+    if (customerToDelete == null)
+    {
+        return Results.NotFound();
+    }
+    db.Customers.Remove(customerToDelete);
+    db.SaveChanges();
+    return Results.NoContent();
+});
 #endregion
 
 #endregion
