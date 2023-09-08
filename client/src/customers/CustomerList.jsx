@@ -87,7 +87,7 @@ export const CustomerList = () => {
                     ))}
                 </tbody>
             </Table>
-            <Modal isOpen={modal} toggle={toggle} >
+            <Modal isOpen={modal} toggle={toggle}>
             <div className="alert-float" style={{position: 'absolute', top: 10, left: 150}}>
                 <Alert color="info" isOpen={visible} toggle={onDismiss}>
                     Please fill each input

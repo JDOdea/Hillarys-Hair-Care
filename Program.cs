@@ -90,6 +90,22 @@ app.MapGet("/api/stylists", (HillarysHairCareDbContext db) =>
 {
     return db.Stylists;
 });
+
+//  Create Stylist
+app.MapPost("/api/stylists", (HillarysHairCareDbContext db, Stylist stylist) =>
+{
+    try
+    {
+        stylist.Id = db.Stylists.Count() > 0 ? db.Stylists.Max(s => s.Id) + 1 : 1;
+        db.Stylists.Add(stylist);
+        db.SaveChanges();
+        return Results.Created($"/api/stylists/{stylist.Id}", stylist);
+    }
+    catch (DbUpdateException)
+    {
+        return Results.BadRequest("Invalid data submitted");
+    }
+});
 #endregion
 
 #endregion
