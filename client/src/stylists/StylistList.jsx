@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createStylist, getStylists } from "../data/StylistsData";
+import { changeStylistStatus, createStylist, getStylists } from "../data/StylistsData";
 import { Alert, Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Table } from "reactstrap";
 
 export const StylistList = () => {
@@ -69,6 +69,21 @@ export const StylistList = () => {
                             <td>{s.firstName}</td>
                             <td>{s.lastName}</td>
                             <td>{s.isActive ? "Active" : "Inactive"}</td>
+                            <td>
+                                {
+                                    s.isActive 
+                                    ? 
+                                    <Button onClick={() => {
+                                        changeStylistStatus(s.id)
+                                            .then(getAllStylists());
+                                    }}>Deactivate</Button>
+                                    :
+                                    <Button onClick={() => {
+                                        changeStylistStatus(s.id)
+                                            .then(getAllStylists());
+                                    }}>Activate</Button>
+                                }
+                            </td>
                         </tr>
                     ))}
                 </tbody>

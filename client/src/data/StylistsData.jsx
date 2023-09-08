@@ -13,3 +13,13 @@ export const createStylist = (stylist) => {
         body: JSON.stringify(stylist),
     }).then((res) => res.json());
 }
+
+//  Change status of Stylist
+export const changeStylistStatus = async (id) => {
+    await fetch(`${_apiUrl}/${id}/status`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        }
+    });
+}
