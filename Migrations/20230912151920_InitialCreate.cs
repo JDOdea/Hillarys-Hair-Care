@@ -63,7 +63,6 @@ namespace HillarysHairCare.Migrations
                     StylistId = table.Column<int>(type: "integer", nullable: false),
                     CustomerId = table.Column<int>(type: "integer", nullable: false),
                     ScheduledDate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    TotalCost = table.Column<decimal>(type: "numeric", nullable: false),
                     IsCancelled = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
@@ -114,7 +113,9 @@ namespace HillarysHairCare.Migrations
                 {
                     { 1, "jdfitz@gmail.com", "JD", "Fitzmartin" },
                     { 2, "josh@gmail.com", "Josh", "Baugh" },
-                    { 3, "austin@gmail.com", "Austin", "Flowers" }
+                    { 3, "austin@gmail.com", "Austin", "Flowers" },
+                    { 4, "rhmuse@gmail.com", "Rhett", "Muse" },
+                    { 5, "ahare@gmail.com", "Alex", "Hare" }
                 });
 
             migrationBuilder.InsertData(
@@ -137,16 +138,33 @@ namespace HillarysHairCare.Migrations
                 {
                     { 1, "Liza", true, "Vavrichyna" },
                     { 2, "David", true, "Bartek" },
-                    { 3, "Greg", false, "Korte" }
+                    { 3, "Greg", false, "Korte" },
+                    { 4, "Jackson", false, "Henderson" },
+                    { 5, "Deanna", true, "Davis" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Appointments",
-                columns: new[] { "Id", "CustomerId", "IsCancelled", "ScheduledDate", "StylistId", "TotalCost" },
+                columns: new[] { "Id", "CustomerId", "IsCancelled", "ScheduledDate", "StylistId" },
                 values: new object[,]
                 {
-                    { 1, 3, true, new DateTime(2023, 8, 16, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 2, 0m },
-                    { 2, 1, false, new DateTime(2023, 9, 8, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 1, 0m }
+                    { 1, 3, true, new DateTime(2023, 8, 16, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 2 },
+                    { 2, 1, false, new DateTime(2023, 9, 8, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 1 },
+                    { 3, 2, false, new DateTime(2023, 9, 12, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 3 },
+                    { 4, 1, false, new DateTime(2023, 9, 13, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 4 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AppointmentService",
+                columns: new[] { "AppointmentsId", "ServicesId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 1, 6 },
+                    { 2, 2 },
+                    { 2, 3 },
+                    { 3, 1 },
+                    { 4, 4 }
                 });
 
             migrationBuilder.CreateIndex(

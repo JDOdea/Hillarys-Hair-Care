@@ -5,6 +5,11 @@ export const getStylists = async () => {
     return await fetch(_apiUrl).then((r) => r.json());
 }
 
+//  Get all active Stylists
+export const getActiveStylists = async () => {
+    return await fetch(`${_apiUrl}/active`).then((r) => r.json());
+}
+
 //  Add Stylist
 export const createStylist = (stylist) => {
     return fetch(_apiUrl, {

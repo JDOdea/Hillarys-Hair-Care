@@ -43,7 +43,27 @@ app.MapGet("/api/appointments", (HillarysHairCareDbContext db) =>
 {
     return db.Appointments
         .Include(s => s.Stylist)
-        .Include(c => c.Customer);
+        .Include(c => c.Customer)
+        .Include(s => s.Services);
+});
+
+//  Create Appointment
+app.MapPost("/api/appointments", (HillarysHairCareDbContext db, Appointment appointment) =>
+{
+    try
+    { 
+
+        List<Service> matchedServices = db.Services.Where(s => appointment.Services.Select(serv => serv.Id).Contains(s.Id)).ToList();
+        appointment.Services = matchedServices;
+        
+        db.Appointments.Add(appointment);
+        db.SaveChanges();
+        return Results.Created($"/api/appointments/{appointment.Id}", appointment);
+    }
+    catch (DbUpdateException)
+    {
+        return Results.BadRequest("Invalid data submitted");
+    }
 });
 #endregion
 
@@ -89,6 +109,14 @@ app.MapDelete("/api/customers/{id}", (HillarysHairCareDbContext db, int id) =>
 app.MapGet("/api/stylists", (HillarysHairCareDbContext db) =>
 {
     return db.Stylists
+        .OrderBy(s => s.Id);
+});
+
+//  Get all active Stylists
+app.MapGet("/api/stylists/active", (HillarysHairCareDbContext db) =>
+{
+    return db.Stylists
+        .Where(s => s.IsActive == true)
         .OrderBy(s => s.Id);
 });
 

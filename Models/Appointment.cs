@@ -12,6 +12,17 @@ public class Appointment
     public List<Service> Services { get; set; }
     [Required]
     public DateTime ScheduledDate { get; set; }
-    public decimal TotalCost { get; set; }
     public bool IsCancelled { get; set; }
+    public decimal TotalCost 
+    {
+        get
+            {
+                decimal baseCost = 0;
+                foreach (Service service in Services)
+                {
+                    baseCost += service.Charge;
+                }
+                return baseCost;
+            }
+    }
 }
