@@ -34,6 +34,38 @@ namespace HillarysHairCare.Migrations
                     b.HasIndex("ServicesId");
 
                     b.ToTable("AppointmentService");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentsId = 1,
+                            ServicesId = 1
+                        },
+                        new
+                        {
+                            AppointmentsId = 1,
+                            ServicesId = 6
+                        },
+                        new
+                        {
+                            AppointmentsId = 2,
+                            ServicesId = 2
+                        },
+                        new
+                        {
+                            AppointmentsId = 2,
+                            ServicesId = 3
+                        },
+                        new
+                        {
+                            AppointmentsId = 3,
+                            ServicesId = 1
+                        },
+                        new
+                        {
+                            AppointmentsId = 4,
+                            ServicesId = 4
+                        });
                 });
 
             modelBuilder.Entity("Hillarys.Models.Appointment", b =>
@@ -56,9 +88,6 @@ namespace HillarysHairCare.Migrations
                     b.Property<int>("StylistId")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("TotalCost")
-                        .HasColumnType("numeric");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -74,8 +103,7 @@ namespace HillarysHairCare.Migrations
                             CustomerId = 3,
                             IsCancelled = true,
                             ScheduledDate = new DateTime(2023, 8, 16, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
-                            StylistId = 2,
-                            TotalCost = 0m
+                            StylistId = 2
                         },
                         new
                         {
@@ -83,8 +111,23 @@ namespace HillarysHairCare.Migrations
                             CustomerId = 1,
                             IsCancelled = false,
                             ScheduledDate = new DateTime(2023, 9, 8, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
-                            StylistId = 1,
-                            TotalCost = 0m
+                            StylistId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CustomerId = 2,
+                            IsCancelled = false,
+                            ScheduledDate = new DateTime(2023, 9, 12, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            StylistId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CustomerId = 1,
+                            IsCancelled = false,
+                            ScheduledDate = new DateTime(2023, 9, 13, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            StylistId = 4
                         });
                 });
 
@@ -133,6 +176,20 @@ namespace HillarysHairCare.Migrations
                             Email = "austin@gmail.com",
                             FirstName = "Austin",
                             LastName = "Flowers"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "rhmuse@gmail.com",
+                            FirstName = "Rhett",
+                            LastName = "Muse"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "ahare@gmail.com",
+                            FirstName = "Alex",
+                            LastName = "Hare"
                         });
                 });
 
@@ -238,6 +295,20 @@ namespace HillarysHairCare.Migrations
                             FirstName = "Greg",
                             IsActive = false,
                             LastName = "Korte"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            FirstName = "Jackson",
+                            IsActive = false,
+                            LastName = "Henderson"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            FirstName = "Deanna",
+                            IsActive = true,
+                            LastName = "Davis"
                         });
                 });
 

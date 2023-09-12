@@ -6,3 +6,20 @@
   margin-left: 4px;
   align-self: center;
 }
+
+.appointmentForm-bottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+.appointmentForm-services {
+  margin: 15px;
+}
+
+.appointmentForm-service {
+  display: flex;
+}
+
+.appointmentForm-checkbox {
+  margin-left: 8px;
+}

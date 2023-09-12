@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { Table, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label, Alert } from "reactstrap";
+import { Alert, Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalHeader, ModalFooter, Table } from "reactstrap";
 import { createCustomer, getCustomers, removeCustomer } from "../data/CustomersData";
 
 
