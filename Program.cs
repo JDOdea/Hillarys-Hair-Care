@@ -2,6 +2,7 @@ using Hillarys.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using System.Globalization;
 
 #region Defaults
 var builder = WebApplication.CreateBuilder(args);
@@ -52,10 +53,12 @@ app.MapPost("/api/appointments", (HillarysHairCareDbContext db, Appointment appo
 {
     try
     { 
-
         List<Service> matchedServices = db.Services.Where(s => appointment.Services.Select(serv => serv.Id).Contains(s.Id)).ToList();
         appointment.Services = matchedServices;
-        
+
+        string isoDateTimeString = appointment.ScheduledDate.ToString();
+        appointment.ScheduledDate = DateTime.Parse(isoDateTimeString, null, DateTimeStyles.RoundtripKind);
+
         db.Appointments.Add(appointment);
         db.SaveChanges();
         return Results.Created($"/api/appointments/{appointment.Id}", appointment);
@@ -64,6 +67,46 @@ app.MapPost("/api/appointments", (HillarysHairCareDbContext db, Appointment appo
     {
         return Results.BadRequest("Invalid data submitted");
     }
+});
+
+//  Edit Appointment
+app.MapPut("/api/appointments/{id}", (HillarysHairCareDbContext db, int id, Appointment appointmentUpdate) => 
+{
+
+    Appointment appointment = db.Appointments.SingleOrDefault(a => a.Id == id);
+    if (appointment == null)
+    {
+        return Results.NotFound();
+    }
+
+    List<Service> matchedServices = db.Services.Where(s => appointmentUpdate.Services.Select(serv => serv.Id).Contains(s.Id)).ToList();
+    List<Service> oldServices = appointment.Services;
+    oldServices = matchedServices;
+
+    string isoDateTimeString = appointmentUpdate.ScheduledDate.ToString();
+    appointment.ScheduledDate = DateTime.Parse(isoDateTimeString, null, DateTimeStyles.RoundtripKind);
+
+    appointment.StylistId = appointmentUpdate.StylistId;
+    appointment.CustomerId = appointmentUpdate.CustomerId;
+    appointment.ScheduledDate = appointmentUpdate.ScheduledDate;
+
+    db.SaveChanges();
+    return Results.NoContent();
+
+    
+});
+
+//  Cancel Appointment
+app.MapPut("/api/appointments/{id}", (HillarysHairCareDbContext db, int id) => 
+{
+    Appointment appointmentToCancel = db.Appointments.SingleOrDefault(a => a.Id == id);
+    if (appointmentToCancel == null)
+    {
+        return Results.NotFound();
+    }
+    appointmentToCancel.IsCancelled = true;
+    db.SaveChanges();
+    return Results.NoContent();
 });
 #endregion
 
