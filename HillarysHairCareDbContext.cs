@@ -17,10 +17,10 @@ public class HillarysHairCareDbContext : DbContext
     {
         modelBuilder.Entity<Appointment>().HasData(new Appointment[]
         {
-            new Appointment {Id = 1, CustomerId = 3, StylistId = 2, ScheduledDate = DateTime.Parse("2023-08-16T15:40:34.037788"), IsCancelled = true},
-            new Appointment {Id = 2, CustomerId = 1, StylistId = 1, ScheduledDate = DateTime.Parse("2023-09-08T15:40:34.037788"), IsCancelled = false},
-            new Appointment {Id = 3, CustomerId = 2, StylistId = 3, ScheduledDate = DateTime.Parse("2023-09-12T15:40:34.037788"), IsCancelled = false},
-            new Appointment {Id = 4, CustomerId = 1, StylistId = 4, ScheduledDate = DateTime.Parse("2023-09-13T15:40:34.037788"), IsCancelled = false}
+            new Appointment {Id = 1, CustomerId = 3, StylistId = 2, ScheduledDate = DateTime.Parse("2023-08-16T15:40:00"), IsCancelled = true},
+            new Appointment {Id = 2, CustomerId = 1, StylistId = 1, ScheduledDate = DateTime.Parse("2023-09-08T15:40:00"), IsCancelled = false},
+            new Appointment {Id = 3, CustomerId = 2, StylistId = 3, ScheduledDate = DateTime.Parse("2023-09-12T15:40:00"), IsCancelled = false},
+            new Appointment {Id = 4, CustomerId = 1, StylistId = 4, ScheduledDate = DateTime.Parse("2023-09-13T15:40:00"), IsCancelled = false}
         });
 
         modelBuilder.Entity<Service>().HasData(new Service[]
@@ -59,7 +59,8 @@ public class HillarysHairCareDbContext : DbContext
             new Stylist {Id = 2, FirstName = "David", LastName = "Bartek", IsActive = true},
             new Stylist {Id = 3, FirstName = "Greg", LastName = "Korte", IsActive = false},
             new Stylist {Id = 4, FirstName = "Jackson", LastName = "Henderson", IsActive = false},
-            new Stylist {Id = 5, FirstName = "Deanna", LastName = "Davis", IsActive = true}
+            new Stylist {Id = 5, FirstName = "Deanna", LastName = "Davis", IsActive = true},
+            new Stylist {Id = 6, FirstName = "Caroline", LastName = "Madison", IsActive = true}
         });
     }
 }

@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppointmentList } from './appointments/AppointmentList';
 import { CustomerList } from './customers/CustomerList';
-import { AddCustomer } from './customers/AddCustomer';
 import { StylistList } from './stylists/StylistList';
 import { ServiceList } from './services/ServiceList';
 

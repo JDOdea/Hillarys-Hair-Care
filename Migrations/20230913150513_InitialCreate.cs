@@ -140,7 +140,8 @@ namespace HillarysHairCare.Migrations
                     { 2, "David", true, "Bartek" },
                     { 3, "Greg", false, "Korte" },
                     { 4, "Jackson", false, "Henderson" },
-                    { 5, "Deanna", true, "Davis" }
+                    { 5, "Deanna", true, "Davis" },
+                    { 6, "Caroline", true, "Madison" }
                 });
 
             migrationBuilder.InsertData(
@@ -148,10 +149,10 @@ namespace HillarysHairCare.Migrations
                 columns: new[] { "Id", "CustomerId", "IsCancelled", "ScheduledDate", "StylistId" },
                 values: new object[,]
                 {
-                    { 1, 3, true, new DateTime(2023, 8, 16, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 2 },
-                    { 2, 1, false, new DateTime(2023, 9, 8, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 1 },
-                    { 3, 2, false, new DateTime(2023, 9, 12, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 3 },
-                    { 4, 1, false, new DateTime(2023, 9, 13, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880), 4 }
+                    { 1, 3, true, new DateTime(2023, 8, 16, 15, 40, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 2, 1, false, new DateTime(2023, 9, 8, 15, 40, 0, 0, DateTimeKind.Unspecified), 1 },
+                    { 3, 2, false, new DateTime(2023, 9, 12, 15, 40, 0, 0, DateTimeKind.Unspecified), 3 },
+                    { 4, 1, false, new DateTime(2023, 9, 13, 15, 40, 0, 0, DateTimeKind.Unspecified), 4 }
                 });
 
             migrationBuilder.InsertData(

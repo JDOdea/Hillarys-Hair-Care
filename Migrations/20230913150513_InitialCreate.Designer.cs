@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HillarysHairCare.Migrations
 {
     [DbContext(typeof(HillarysHairCareDbContext))]
-    [Migration("20230912151920_InitialCreate")]
+    [Migration("20230913150513_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -104,7 +104,7 @@ namespace HillarysHairCare.Migrations
                             Id = 1,
                             CustomerId = 3,
                             IsCancelled = true,
-                            ScheduledDate = new DateTime(2023, 8, 16, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            ScheduledDate = new DateTime(2023, 8, 16, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             StylistId = 2
                         },
                         new
@@ -112,7 +112,7 @@ namespace HillarysHairCare.Migrations
                             Id = 2,
                             CustomerId = 1,
                             IsCancelled = false,
-                            ScheduledDate = new DateTime(2023, 9, 8, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            ScheduledDate = new DateTime(2023, 9, 8, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             StylistId = 1
                         },
                         new
@@ -120,7 +120,7 @@ namespace HillarysHairCare.Migrations
                             Id = 3,
                             CustomerId = 2,
                             IsCancelled = false,
-                            ScheduledDate = new DateTime(2023, 9, 12, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            ScheduledDate = new DateTime(2023, 9, 12, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             StylistId = 3
                         },
                         new
@@ -128,7 +128,7 @@ namespace HillarysHairCare.Migrations
                             Id = 4,
                             CustomerId = 1,
                             IsCancelled = false,
-                            ScheduledDate = new DateTime(2023, 9, 13, 15, 40, 34, 37, DateTimeKind.Unspecified).AddTicks(7880),
+                            ScheduledDate = new DateTime(2023, 9, 13, 15, 40, 0, 0, DateTimeKind.Unspecified),
                             StylistId = 4
                         });
                 });
@@ -311,6 +311,13 @@ namespace HillarysHairCare.Migrations
                             FirstName = "Deanna",
                             IsActive = true,
                             LastName = "Davis"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            FirstName = "Caroline",
+                            IsActive = true,
+                            LastName = "Madison"
                         });
                 });
 

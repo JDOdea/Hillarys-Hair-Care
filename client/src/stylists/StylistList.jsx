@@ -8,8 +8,8 @@ export const StylistList = () => {
     const [visible, setVisible] = useState(false);
     const [stylist, update] = useState(
         {
-            firstName: null,
-            lastName: null,
+            firstName: "",
+            lastName: "",
             isActive: true
         }
     );
